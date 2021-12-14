@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+
 @Getter
 @Setter
 @Entity
@@ -11,13 +12,13 @@ import javax.persistence.*;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @Column(nullable = false)
+    @Column(name = "phone")
     private String phone;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -27,10 +28,9 @@ public class Student {
     public Student() {
     }
 
-    public Student(Long id, String name, String phone) {
-        this.id = id;
+    public Student(String name, String phone, Address address) {
         this.name = name;
         this.phone = phone;
+        this.address = address;
     }
-
 }

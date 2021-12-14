@@ -10,22 +10,26 @@ import javax.persistence.*;
 @Entity
 @Table(name = "address")
 public class Address {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "address_id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "city")
     private String city;
 
-    @Column(nullable = false)
+    @Column(name = "state")
     private String state;
 
-    @Column(nullable = false)
+    @Column(name = "street")
     private String street;
 
-    @OneToOne(mappedBy = "address")
-    private Student student;
+    public Address(String city, String state, String street) {
+        this.city = city;
+        this.state = state;
+        this.street = street;
+    }
 
     public Address() {
     }
