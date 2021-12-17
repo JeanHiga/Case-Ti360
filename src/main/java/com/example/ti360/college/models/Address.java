@@ -25,12 +25,13 @@ public class Address {
     @Column(name = "street")
     private String street;
 
+    public Address() {
+    }
+
     public Address(String city, String state, String street) {
         this.city = city;
         this.state = state;
         this.street = street;
     }
 
-    public Address() {
-    }
 }

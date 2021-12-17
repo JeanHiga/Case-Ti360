@@ -22,8 +22,9 @@ public class Student {
     private String phone;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
+    @JoinColumn
     private Address address;
+
 
     public Student() {
     }
@@ -33,4 +34,5 @@ public class Student {
         this.phone = phone;
         this.address = address;
     }
+
 }

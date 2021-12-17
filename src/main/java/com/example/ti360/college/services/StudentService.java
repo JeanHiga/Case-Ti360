@@ -16,21 +16,27 @@ public class StudentService {
     private StudentRepository studentRepository;
 
 
-    public Student addStudent(@RequestBody Student student){
+    public Student addStudent(@RequestBody Student student) {
         return studentRepository.save(student);
-    }
-
-    public List<Student> findAllStudents() {
-        return studentRepository.findAll();
     }
 
     public List<Student> findByName(String name) {
         return studentRepository.findByName(name);
     }
 
-    public ResponseEntity<Student> replace(Student student) {
-        studentRepository.save(student);
-
+    public ResponseEntity<Student> replace(Long id, Student student) {
+        if (!studentRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        student = studentRepository.save(student);
         return ResponseEntity.ok(student);
+    }
+
+    public ResponseEntity<Void> deleteStudent(Long id) {
+        if (!studentRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        studentRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
