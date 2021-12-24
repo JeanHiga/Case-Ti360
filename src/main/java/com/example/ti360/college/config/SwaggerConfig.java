@@ -24,7 +24,7 @@ public class SwaggerConfig {
     private ApiInfo infoApi() {
         return new ApiInfoBuilder()
                 .title("Case Back End - TI 360")
-                .description("Feature - Alteração de Dados Cadastrais - Alunos da Faculdade")
+                .description(" Alteração de Dados Cadastrais - Alunos da Faculdade")
                 .version("1.0.0")
                 .build();
     }
